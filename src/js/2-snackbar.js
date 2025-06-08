@@ -5,14 +5,14 @@ const form = document.querySelector('.form');
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  const delay = form.elements.delay.value;
+  const delay = Number(form.elements.delay.value);
   const checkedRadio = form.elements.state.value === 'fulfilled';
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (checkedRadio) {
-        resolve('Promise fulfilled');
+        resolve(delay);
       } else {
-        reject('Promise rejected');
+        reject(delay);
       }
     }, delay);
   })
